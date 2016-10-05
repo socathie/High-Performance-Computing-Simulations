@@ -1,0 +1,11 @@
+#!/bin/bash
+#PBS -l nodes=4:ppn=2,arch=x86_64
+#PBS -l walltime=00:04:59
+#PBS -o hqsort_mpi.out
+#PBS -j oe
+#PBS -N hqsort_mpi
+#PBS -A lc_an1
+WORK_HOME=/home/rcf-proj/csci653/tszyanso/
+cd $WORK_HOME
+np=$(cat $PBS_NODEFILE | wc -l)
+mpirun -np $np -machinefile $PBS_NODEFILE ./hqsort_mpi
